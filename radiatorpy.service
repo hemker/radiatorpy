@@ -1,0 +1,13 @@
+[Unit]
+Description=Radiatorpy Eq3 Bot
+
+[Service]
+Type=simple
+User=pi
+Group=pi
+ExecStart=/usr/bin/python3 /home/pi/dev/radiatorpy/bot.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
