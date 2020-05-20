@@ -55,7 +55,6 @@ class Dispatcher:
     def manual(self, update, context):
         answer = {}
         for radiator, temperature in self.__parse_radiator(context.args):
-            print('foo: ' + str(radiator) + ' ' + str(temperature))
             answer[radiator] = self.control.mode_manual(radiator, temperature)
         
         update.message.reply_text(MF.map_with_heading('New mode\(s\)', answer), parse_mode='MarkdownV2', quote=False)
@@ -71,3 +70,11 @@ class Dispatcher:
                 return [args[0]]
         else:
             return [(args[0], float(args[1]))]
+
+    @command('request status')
+    def status(self, update, context):
+        answer = {}
+        for radiator in self.__parse_radiator(context.args):
+            answer[radiator] = self.control.get_status(radiator)
+
+        update.message.reply_text(MF.map_with_heading('Status', answer), parse_mode='MarkdownV2', quote=False)

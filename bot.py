@@ -12,6 +12,7 @@ updater.dispatcher.add_handler(CommandHandler('help', dispatcher.help))
 updater.dispatcher.add_handler(CommandHandler('off', dispatcher.off))
 updater.dispatcher.add_handler(CommandHandler('auto', dispatcher.auto))
 updater.dispatcher.add_handler(CommandHandler('manual', dispatcher.manual))
+updater.dispatcher.add_handler(CommandHandler('status', dispatcher.status))
 
 updater.start_polling()
 updater.idle()
